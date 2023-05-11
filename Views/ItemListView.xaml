@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:MauiApp1.Models"
+             xmlns:searchHanlders="clr-namespace:MauiApp1.SearchHandlers"
+             xmlns:viewModels="clr-namespace:MauiApp1.ViewModels"
+             x:Class="MauiApp1.Views.ItemListView"
+             Title="Search">
+
+    <Shell.SearchHandler>
+        <searchHanlders:ItemSearchHandler
+            Placeholder="Search item..."
+            ShowsResults="True"
+            QueryIcon="search"
+            NavigationRoute="ItemDetailView"
+            ClearIcon="clear"
+            Items="{x:Static viewModels:ItemListViewModel.Items}">
+            <searchHanlders:ItemSearchHandler.ItemTemplate>
+                <DataTemplate x:DataType="models:ItemModel">
+                    <Grid RowDefinitions="Auto" ColumnDefinitions="40, Auto">
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" FontSize="12" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </searchHanlders:ItemSearchHandler.ItemTemplate>
+        </searchHanlders:ItemSearchHandler>
+        
+    </Shell.SearchHandler>
+    
+</ContentPage>
